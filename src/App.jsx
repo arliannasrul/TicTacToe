@@ -30,12 +30,25 @@ export default function Board() {
     const winner = calculateWinner(squares);
     let status = '';
     if(winner){
-        status = 'Pemenangnya: ' + winner;
+        status = (
+            <div className='winner-status'>
+                <strong>Pemenangnya = {winner}</strong>🎉🎉🎉
+            </div>
+        );
     } else {
-        status = 'Giliran Pemain: ' + (xIsNext ? 'X' : 'O');
+        status = <div className='turn-status'>Giliran Pemain: {xIsNext ? 'X' : 'O'}</div>
     }
     return (
         <>
+            {winner && (
+            <div className="winner-overlay">
+                <div className="winner-popup">
+                    <strong className='winner-text'>{winner}</strong> Menang 🎉
+                    <button className="reset-button" onClick={resetGame}>🔄 Mulai Ulang</button>
+                </div>
+            </div>
+            )}
+
             <div className='status'>{status}</div>
             <div className='board'>
                 <Square value={squares[0]} onSquareClick={()=>handleClick(0)}/>
@@ -49,7 +62,7 @@ export default function Board() {
                 <Square value={squares[8]} onSquareClick={()=>handleClick(8)}/>
             </div>
             <div className='mulai-ulang'>
-                <button className='reset-button' onClick ={resetGame}>Mulai Ulang</button>
+                <button className='reset-button' onClick ={resetGame}>🔄Mulai Ulang</button>
             </div>
             
         </>
@@ -72,7 +85,7 @@ function calculateWinner(squares) {
 for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
 
-    if(squares[a] && squares[a] == squares[b] && squares[c]){
+    if(squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
         return squares[a];
         }
     }

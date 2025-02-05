@@ -6,7 +6,7 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
-  background-color: aqua;
+  background-color: rgb(219, 219, 219);
 }
 
 .square {
@@ -17,7 +17,7 @@ body {
   font-size: 3rem;
   font-weight: bold;
   cursor: pointer;
-  background-color: skyblue;
+  background-color: rgb(255, 255, 255);
   
   
 }
@@ -45,4 +45,89 @@ body {
 .reset-button {
   background-color:rgb(53, 186, 239);
   border-radius: 20px;
+  font-size: 18px;
+  padding:10px
+}
+
+.winner-status {
+  font-size: 24px;
+  font-weight: bold;
+  color: black; /* Warna merah mencolok */
+  background: red;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  animation: winnerFade 1s infinite alternate;
+}
+
+@keyframes winnerFade {
+  from { transform: scale(1); opacity: 0.8; }
+  to { transform: scale(1.1); opacity: 1; }
+}
+
+
+/* Background overlay */
+.winner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Warna gelap transparan */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Pop-up pemenang */
+.winner-popup {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 34px;
+  font-weight: bold;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  animation: popupShow 0.5s ease-in-out;
+  display: flex;
+  flex-direction:column; /* Susun elemen secara vertikal */
+  align-items: center; /* Tengahkan elemen */
+  
+}
+
+/* Animasi pop-up */
+@keyframes popupShow {
+  from {
+      transform: scale(0.8);
+      opacity: 0;
+  }
+  to {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+
+
+
+/* Tombol reset di pop-up */
+.winner-popup .reset-button {
+  padding: 10px 50px;
+  font-size: 18px;
+  background-color: #ff5733;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  
+}
+
+.winner-popup .reset-button:hover {
+  background-color: #cc4628;
+}
+
+
+.winner-text {
+  color: red;
 }
